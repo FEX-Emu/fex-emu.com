@@ -17,6 +17,7 @@ avatar: https://avatars.githubusercontent.com/u/61863475
 
 # Includes an icon in the footer for each username you enter
 footer-links:
+  discord: fexemu
   dribbble:
   email:
   facebook:
@@ -26,7 +27,7 @@ footer-links:
   linkedin:
   pinterest:
   rss: # just type anything here for a working RSS icon
-  twitter:
+  twitter: FEX_Emu
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/

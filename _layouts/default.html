@@ -29,6 +29,9 @@
           <nav>
             <a href="{{ site.baseurl }}/">Blog</a>
             <a href="https://github.com/FEX-Emu/FEX">Github</a>
+		{% if site.footer-links.discord %}
+			<a href="https://discord.gg/{{ site.footer-links.discord }}">Discord</a>
+		{% endif %}
           </nav>
         </header>
       </div>
