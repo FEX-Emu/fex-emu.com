@@ -1,5 +1,777 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-26T15:53:20+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">FEX-Emu</title><subtitle>A fast linux usermode x86 and x86-64 emulator</subtitle><entry><title type="html">Hello world</title><link href="http://localhost:4000/Hello-World/" rel="alternate" type="text/html" title="Hello world" /><published>2020-01-26T00:00:00+02:00</published><updated>2020-01-26T00:00:00+02:00</updated><id>http://localhost:4000/Hello-World</id><content type="html" xml:base="http://localhost:4000/Hello-World/">&lt;p&gt;FEX-Emu is a linux usermode x86 and x86-64 emulator for arm64. It aims to bring x86 and x86-64 games to arm64 laptops.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4001/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4001/" rel="alternate" type="text/html" /><updated>2022-01-07T12:00:48+02:00</updated><id>http://localhost:4001/feed.xml</id><title type="html">FEX-Emu</title><subtitle>A fast linux usermode x86 and x86-64 emulator</subtitle><entry><title type="html">FEX 2201 Tagged!</title><link href="http://localhost:4001/FEX-2201/" rel="alternate" type="text/html" title="FEX 2201 Tagged!" /><published>2022-01-03T00:00:00+02:00</published><updated>2022-01-03T00:00:00+02:00</updated><id>http://localhost:4001/FEX-2201</id><content type="html" xml:base="http://localhost:4001/FEX-2201/">&lt;p&gt;See &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2201&quot;&gt;2201 Release Notes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;fex-2201&quot;&gt;FEX-2201&lt;/h1&gt;
+&lt;h1 id=&quot;changes&quot;&gt;Changes&lt;/h1&gt;
+&lt;p&gt;A large amount of changes this month.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;We now support BMI2, RDTSCP, CLZero.&lt;/li&gt;
+  &lt;li&gt;We tell the guest what ARM CPU name we are running on.&lt;/li&gt;
+  &lt;li&gt;We expose the hybrid CPU flag flag on big.LITTLE ARM SoCs.&lt;/li&gt;
+  &lt;li&gt;Bunches of syscall fixes, JIT compile time speed increases, usability improvements.&lt;/li&gt;
+  &lt;li&gt;Tons more.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A new FEXRootFSFetcher tool for downloading prebuilt RootFS images.
+A Python script for automatically setting up an Ubuntu PPA and RootFS.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;See our quick start guide to see how &lt;a href=&quot;https://github.com/FEX-Emu/FEX#quick-start-guide&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Or see the Ubuntu PPA &lt;a href=&quot;https://launchpad.net/~fex-emu/+archive/ubuntu/fex&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;fexcore&quot;&gt;FEXCore&lt;/h2&gt;
+
+&lt;h3 id=&quot;arm64&quot;&gt;Arm64&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fixes vixl assertions around ubfm usage (5654f9a0)&lt;/li&gt;
+  &lt;li&gt;Fixes MapSelectCC FGT flag (13087f84)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cpuid&quot;&gt;CPUID&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fixes another memory overflow issue (0e45b98f)&lt;/li&gt;
+  &lt;li&gt;Fixes crash on unknown CPU (be3e3a35)&lt;/li&gt;
+  &lt;li&gt;CPUID Expose Hybrid flag and CPU names (9394e49c)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;context&quot;&gt;Context&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Take some arguments as pointer-to-const (9d439047)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dispatcher&quot;&gt;Dispatcher&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Disables unsync context message (154468c1)&lt;/li&gt;
+  &lt;li&gt;Adds more state reconstruction to state restore (fa6f1b1d)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;opcodedispatcher&quot;&gt;OpcodeDispatcher&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Handle PDEP (0a3a270a)&lt;/li&gt;
+  &lt;li&gt;Handle PEXT (91984003)&lt;/li&gt;
+  &lt;li&gt;Implements RDTSCP (ee821b9c)&lt;/li&gt;
+  &lt;li&gt;Implements CLZero instruction (5f0dfcd7)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;x86tables&quot;&gt;X86Tables&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Build Unknown op definition tables at compile time (e8670bba)&lt;/li&gt;
+  &lt;li&gt;Speed up initialization of X86Tables (e99a23cf)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;hostfeatures&quot;&gt;HostFeatures&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Detect if the host CPU suports float exceptions  (117cbde2)&lt;/li&gt;
+  &lt;li&gt;Consolidates HostFeatures flags (e24eb7a7)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ir&quot;&gt;IR&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fixes sized constant mask (565d1e27)
+    &lt;h3 id=&quot;misc&quot;&gt;Misc&lt;/h3&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Don’t use Run() inside RunUntilExit() (0bf57765)&lt;/li&gt;
+  &lt;li&gt;Fixes a memcpy overflow in processor brand (340699ca)&lt;/li&gt;
+  &lt;li&gt;Fixes FEXCore_Base config dependency (95bd309d)&lt;/li&gt;
+  &lt;li&gt;Implements recoverable INTO instruction (cd4269f4)&lt;/li&gt;
+  &lt;li&gt;Reorganizes some AOT related code (d4655fbb)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;linux-emulationsyscalls&quot;&gt;Linux Emulation/Syscalls&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fixes pidfd_send_signal for 32-bit (ac63a2ba)&lt;/li&gt;
+  &lt;li&gt;Finish 32-bit msqid_ds usage (98210fdf)&lt;/li&gt;
+  &lt;li&gt;Implements the remaining 32-bit syscalls (bc120b9f)&lt;/li&gt;
+  &lt;li&gt;Fixes semid_ds_64 definition (f2fd9d9e)&lt;/li&gt;
+  &lt;li&gt;Fixes 32-bit shmctl (45430e95)&lt;/li&gt;
+  &lt;li&gt;Adds the safe syscall unimplemented gap for x86-64 (e05d116b)&lt;/li&gt;
+  &lt;li&gt;Enable warnings (75e5df54)&lt;/li&gt;
+  &lt;li&gt;Socket&lt;/li&gt;
+  &lt;li&gt;Resolve sign comparison mismatch cases (097f48f3)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;misc-1&quot;&gt;Misc&lt;/h2&gt;
+&lt;h3 id=&quot;cmake&quot;&gt;CMake&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Adds an OVERRIDE_VERSION option (08085998)&lt;/li&gt;
+  &lt;li&gt;Adds a TUNE_CPU option (51466519)&lt;/li&gt;
+  &lt;li&gt;Adds experimental libc++ option (f3a27a57)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;build-fixes&quot;&gt;Build fixes&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fixes build on Ubuntu 20.04 take 3 (8f835678)&lt;/li&gt;
+  &lt;li&gt;Fixes build on Ubuntu 20.04 take 2 (059e8a90)&lt;/li&gt;
+  &lt;li&gt;Fixes build on Ubuntu 20.04 (02005e71)&lt;/li&gt;
+  &lt;li&gt;Fixes Ubuntu 20.04 compilation on AArch64 (47bd4795)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;config&quot;&gt;Config&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Enables all host threads by default (edce9818)&lt;/li&gt;
+  &lt;li&gt;Sanitize Core option (9bffaeea)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;docs&quot;&gt;Docs&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Adds documentation about the FEX monthly release process (a65e7a09)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gdbserver&quot;&gt;GDBServer&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fixes long string packet encodings (88ce9b5c)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;misc-2&quot;&gt;Misc&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Stop hardcoding /usr/bin paths (1d5bd152)&lt;/li&gt;
+  &lt;li&gt;Improves compile ability for older libraries (c691d709)&lt;/li&gt;
+  &lt;li&gt;More AOT code movement (43dc232e)&lt;/li&gt;
+  &lt;li&gt;FEXMountDaemon squashfs fixes. (ea73c9d7)&lt;/li&gt;
+  &lt;li&gt;Update jemalloc for fixed libc overrides (c43af0e1)&lt;/li&gt;
+  &lt;li&gt;Implement thunk library generation using libclang (425d9323)&lt;/li&gt;
+  &lt;li&gt;{x32, x64}/Thread: Make use of .data() instead of .at(0) (b6499ac7)&lt;/li&gt;
+  &lt;li&gt;Adds a new ReentrantMutex to use for FEXCore (b9c49027)&lt;/li&gt;
+  &lt;li&gt;NetStream: Move NetBuf definition into cpp file  (9860e8b7)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tests&quot;&gt;Tests&lt;/h2&gt;
+&lt;h3 id=&quot;gvisor&quot;&gt;gvisor&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Disables flaky test (e62cb417)
+    &lt;h3 id=&quot;unittests&quot;&gt;unittests&lt;/h3&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Fixes a missing dependency on ASM tests (b078f511)&lt;/li&gt;
+  &lt;li&gt;Enables remaining unaligned atomic tests on ARMv8.0 (fd042476)&lt;/li&gt;
+  &lt;li&gt;Fixes known failures (5c4112f1)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;rootfs&quot;&gt;RootFS&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Stop trying to retry rootfs after five times (a45bc759)&lt;/li&gt;
+  &lt;li&gt;Be more robust against stale lock files (d4b31cd4)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tools&quot;&gt;Tools&lt;/h2&gt;
+&lt;h3 id=&quot;fexconfig&quot;&gt;FEXConfig&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Removes jemalloc usage (c65be9f5)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;fexrootfsfetcher&quot;&gt;FEXRootFSFetcher&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Remove 0x prefix on hash (b72245a2)&lt;/li&gt;
+  &lt;li&gt;Adds a new tool to help set up a new RootFS (72e8a997)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;scripts&quot;&gt;Scripts&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Adds a python script that can hand hold a user through FEX install (b276750c)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The detailed change log is available on &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2112...FEX-2201&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">See 2201 Release Notes.</summary></entry><entry><title type="html">FEX 2112 Tagged!</title><link href="http://localhost:4001/FEX-2112/" rel="alternate" type="text/html" title="FEX 2112 Tagged!" /><published>2021-12-05T00:00:00+02:00</published><updated>2021-12-05T00:00:00+02:00</updated><id>http://localhost:4001/FEX-2112</id><content type="html" xml:base="http://localhost:4001/FEX-2112/">&lt;p&gt;See &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2112&quot;&gt;2112 Release Notes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;fex-2112&quot;&gt;FEX-2112&lt;/h1&gt;
+&lt;h2 id=&quot;arm64&quot;&gt;Arm64&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Reduce the chance of hanging on reentrant allocations (8ab6830f)&lt;/li&gt;
+  &lt;li&gt;Adds an inline syscall optimization (f7468703)&lt;/li&gt;
+  &lt;li&gt;COND_FGT should map to gt, not hi, as it is not FGTU (b45603d1)
+    &lt;ul&gt;
+      &lt;li&gt;Fixes steamwebhelper burning all CPU cores!&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;fexcore&quot;&gt;FEXCore&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fixes CompileService race condition on thread creation (5345f7fa)&lt;/li&gt;
+  &lt;li&gt;Centralize alignment utility functions in one header (966272ce)&lt;/li&gt;
+  &lt;li&gt;Fixes ERROR_AND_DIE (fbd14b65)&lt;/li&gt;
+  &lt;li&gt;Supports guest SIGILL  (6e1ea92c)&lt;/li&gt;
+  &lt;li&gt;CPUID
+    &lt;ul&gt;
+      &lt;li&gt;Call handler functions directly (ffee22d3)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;OpcodeDispatcher
+    &lt;ul&gt;
+      &lt;li&gt;Remove debug message (d883b4bf)&lt;/li&gt;
+      &lt;li&gt;Implement BZHI (50c8d9ed)&lt;/li&gt;
+      &lt;li&gt;Amend return types of BitSize helpers (c63c5fb6)&lt;/li&gt;
+      &lt;li&gt;Implement MULX (498a845c)&lt;/li&gt;
+      &lt;li&gt;Resolve sign mismatches in loops (ad864e0e)&lt;/li&gt;
+      &lt;li&gt;Add helper for getting bit sizes (3a3cbf2b)&lt;/li&gt;
+      &lt;li&gt;Handle RORX (51d21d86)&lt;/li&gt;
+      &lt;li&gt;Implement BMI2 SARX/SHLX/SHRX (e37a0bbd)&lt;/li&gt;
+      &lt;li&gt;Removes usage of SignalFrame stack on JITs (d81d5e21)&lt;/li&gt;
+      &lt;li&gt;Use std::vector as the underlying container for std::stack (61ccec37)&lt;/li&gt;
+      &lt;li&gt;Partial support for RIP adjust in signal handler (77093a7f)&lt;/li&gt;
+      &lt;li&gt;Resolve unused variable warnings (a04cc4dc)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;OpcodeDecoder
+    &lt;ul&gt;
+      &lt;li&gt;Shorten up GPR and MM base offset retrieval (59ed91c5)&lt;/li&gt;
+      &lt;li&gt;Convert enums into enum classes where applicable (d1fa8bcf)&lt;/li&gt;
+      &lt;li&gt;Add support for ADX (d3cd354c)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Frontend
+    &lt;ul&gt;
+      &lt;li&gt;Handle VEX RXB bits (d47182b6)&lt;/li&gt;
+      &lt;li&gt;Mark modrm function LUT as static (c6662a46)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;GDBStub&lt;/li&gt;
+  &lt;li&gt;Fixes a few hangs and crashes  (e027b83a)&lt;/li&gt;
+  &lt;li&gt;Interpreter
+    &lt;ul&gt;
+      &lt;li&gt;Build op handler table at compile-time (63f9e0b4)&lt;/li&gt;
+      &lt;li&gt;Mark F80CMP array as static constexpr (13ad5b66)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;JIT
+    &lt;ul&gt;
+      &lt;li&gt;Eliminate redundant jump target map lookups (8ef02783)&lt;/li&gt;
+      &lt;li&gt;Ensures signals in compileservice JIT space is handled (97e3a364)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;JitSymbols
+    &lt;ul&gt;
+      &lt;li&gt;Make use of fmt (db0740be)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;IR
+    &lt;ul&gt;
+      &lt;li&gt;Make some interface functions accept pointers to const  (8c38f936)&lt;/li&gt;
+      &lt;li&gt;Convert NodeID into a strong type (b93871ff)&lt;/li&gt;
+      &lt;li&gt;Add type alias for Node IDs  (1f306d66)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;RegisterAllocationPass
+    &lt;ul&gt;
+      &lt;li&gt;Resolve sign comparison mismatch in CalculateNodeInterference() (597e4e1d)&lt;/li&gt;
+      &lt;li&gt;Reduce usages of NodeIDs where applicable (19a06519)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;linux&quot;&gt;Linux&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Updates syscalls to 5.16 syscalls (c4d05fb8)&lt;/li&gt;
+  &lt;li&gt;Fixes sched_getaffinity (d5bf6414)&lt;/li&gt;
+  &lt;li&gt;Fixes MAP_32BIT error case (92ae6ae2)&lt;/li&gt;
+  &lt;li&gt;Fixes sigprocmask with new and old set being the same address (7bb78912)&lt;/li&gt;
+  &lt;li&gt;Passthrough 32-bit syscalls that can be (3dc938b8)&lt;/li&gt;
+  &lt;li&gt;Emulate MAP_32BIT on mmap (081d0169)&lt;/li&gt;
+  &lt;li&gt;SignalDelegator update signal mask on return from sigsuspend (90511ddd)&lt;/li&gt;
+  &lt;li&gt;Updates 32-bit DRM emulation (a92233c7)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;thunks&quot;&gt;Thunks&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fail loudly if thunking is enabled for a library that isn’t installed (b1b61608)&lt;/li&gt;
+  &lt;li&gt;ThunksDB
+    &lt;ul&gt;
+      &lt;li&gt;Updates file to include local libs (e0d40dd4)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tests&quot;&gt;Tests&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Enables 32-bit host runner (cabb58ad)&lt;/li&gt;
+  &lt;li&gt;Minor cleanup (2a894bc1)&lt;/li&gt;
+  &lt;li&gt;Various thunk library cleanups (3730a428)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;misc&quot;&gt;Misc&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;BucketList
+    &lt;ul&gt;
+      &lt;li&gt;Minor API touchups (baadf0b9)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;CMake
+    &lt;ul&gt;
+      &lt;li&gt;Adds option to enable time-trace compile option (919e2bc3)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;CompileService
+    &lt;ul&gt;
+      &lt;li&gt;Store WorkItem instances as unique_ptr (ef772c3e)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ELFCodeLoader
+    &lt;ul&gt;
+      &lt;li&gt;Fixes BRK allocation on some ELF loading (b327daf5)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;EnumUtils
+    &lt;ul&gt;
+      &lt;li&gt;Remove shift operators from helper macro (977d92b7)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;General
+    &lt;ul&gt;
+      &lt;li&gt;Migrate logging over to fmt where possible  (513b02fd)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;RootFS
+    &lt;ul&gt;
+      &lt;li&gt;Keep rootfs around while in container (16f1ad46)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;IR.json/json_ir_generator: Minor touchups to generated IR utilities (9b43f94f)&lt;/li&gt;
+  &lt;li&gt;Various packaging improvements (23e583e1)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;frontend&quot;&gt;Frontend&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Adds Socket logger and tool (6c93b6f7)&lt;/li&gt;
+  &lt;li&gt;FEXLoader
+    &lt;ul&gt;
+      &lt;li&gt;Change 32-bit memory check error to warning (82ebdf52)&lt;/li&gt;
+      &lt;li&gt;Print memory map when 32-bit intersect happens (e6d285a7)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Syscalls
+    &lt;ul&gt;
+      &lt;li&gt;Move construction of syscall name map into GetSyscallName() (0560e9be)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The detailed change log is available on &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2111...FEX-2112&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">See 2112 Release Notes.</summary></entry><entry><title type="html">FEX 2111 Tagged!</title><link href="http://localhost:4001/FEX-2111/" rel="alternate" type="text/html" title="FEX 2111 Tagged!" /><published>2021-11-06T00:00:00+02:00</published><updated>2021-11-06T00:00:00+02:00</updated><id>http://localhost:4001/FEX-2111</id><content type="html" xml:base="http://localhost:4001/FEX-2111/">&lt;p&gt;See &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2111&quot;&gt;2111 Release Notes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;fex-2111&quot;&gt;FEX-2111&lt;/h1&gt;
+&lt;h1 id=&quot;core&quot;&gt;Core&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;BMI1 extension is now supported!
+    &lt;ul&gt;
+      &lt;li&gt;Exposed in CPUID&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Interpreter is split in to multiple files for usability&lt;/li&gt;
+  &lt;li&gt;Improved memory efficiency of some IR ops&lt;/li&gt;
+  &lt;li&gt;Allow grouping JIT symbols by library region
+    &lt;ul&gt;
+      &lt;li&gt;Useful for thunking performance introspection&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;cpuid&quot;&gt;CPUID&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Expose BMI1&lt;/li&gt;
+  &lt;li&gt;Expose Hybrid flag
+    &lt;ul&gt;
+      &lt;li&gt;Only if running on an ARM big.LITTLE CPU combination&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;linux-emulation&quot;&gt;Linux Emulation&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fixes to execve handling with softlinks
+    &lt;ul&gt;
+      &lt;li&gt;Fixes issues with Debian alternatives soft links failing to find binaries&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Implements 32-bit virtio ioctls
+    &lt;ul&gt;
+      &lt;li&gt;Allows OpenGL passthrough in VMs for 32-bit applications&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;No longer do magic SIGCHLD handling
+    &lt;ul&gt;
+      &lt;li&gt;Signal flags already setup correctly, just pass through&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;thunks&quot;&gt;Thunks&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Respect DESTDIR environment variable
+    &lt;ul&gt;
+      &lt;li&gt;Useful to generate installation package&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;XCB, Vulkan, and DRM cleanups&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;misc&quot;&gt;Misc&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fixes a couple environment variable options not respecting textual names&lt;/li&gt;
+  &lt;li&gt;Some FMT changes&lt;/li&gt;
+  &lt;li&gt;Some Optimizations in x86Tables with constexpr&lt;/li&gt;
+  &lt;li&gt;Telemetry for when an application tears an atomic value
+    &lt;ul&gt;
+      &lt;li&gt;Can be used to diagnose emulation bugs&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;FEXConfig fix for 100% CPU usage
+    &lt;ul&gt;
+      &lt;li&gt;glibc 2.34 behaviour change exposing an application bug&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Allocator reserving top 128TB of VA space on Arm64
+    &lt;ul&gt;
+      &lt;li&gt;Linux only gives userspace 47-bit addresses&lt;/li&gt;
+      &lt;li&gt;Minor bug fix in golang&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The detailed change log is available on &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2110...FEX-2111&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">See 2111 Release Notes.</summary></entry><entry><title type="html">FEX 2110, 2109, &amp;amp; 2108 Tagged!</title><link href="http://localhost:4001/FEX-2110/" rel="alternate" type="text/html" title="FEX 2110, 2109, &amp;amp; 2108 Tagged!" /><published>2021-10-08T00:00:00+03:00</published><updated>2021-10-08T00:00:00+03:00</updated><id>http://localhost:4001/FEX-2110</id><content type="html" xml:base="http://localhost:4001/FEX-2110/">&lt;p&gt;See &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2110&quot;&gt;2110 Release Notes&lt;/a&gt;, &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2109&quot;&gt;2109 Release Notes&lt;/a&gt;, and &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2108&quot;&gt;2108 Release Notes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;fex-2110&quot;&gt;FEX-2110&lt;/h1&gt;
+&lt;h2 id=&quot;usability&quot;&gt;Usability&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Adds new Thunks database config layout to make thunks easier to manage
+    &lt;ul&gt;
+      &lt;li&gt;See &lt;a href=&quot;https://wiki.fex-emu.org/index.php/Development:Setting_up_Thunks#Thunks_Database_format&quot;&gt;Setting Up Thunks&lt;/a&gt; for more information&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;compatibility-fixes&quot;&gt;Compatibility fixes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fixes to POSIX message queues, timers, and 32-bit Linux syscalls&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;performance&quot;&gt;Performance&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Vulkan X11 thunking to improve CPU performance
+    &lt;ul&gt;
+      &lt;li&gt;Wayland thunking not currently hooked up&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;minor-fixes&quot;&gt;Minor fixes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;AOT fix a user after free&lt;/li&gt;
+  &lt;li&gt;pressure-vessel check and install redirect&lt;/li&gt;
+  &lt;li&gt;FEXInterpreter flush logs after print. Fixes not seeing logs on crash&lt;/li&gt;
+  &lt;li&gt;EmulatedFilesystem allow guest to see real root. Fixes eON games&lt;/li&gt;
+  &lt;li&gt;FEXMountDaemon race on shutdown fix&lt;/li&gt;
+  &lt;li&gt;StructVerifier fix for comparing match across architectures&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;developer-usability&quot;&gt;Developer usability&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Add a script to more easily extract function signatures for thunks&lt;/li&gt;
+  &lt;li&gt;RA Validation to check register allocation is correct&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;fex-2109&quot;&gt;FEX-2109&lt;/h1&gt;
+&lt;h2 id=&quot;arm64&quot;&gt;Arm64&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fix a bug when spilling registers on POSIX signal&lt;/li&gt;
+  &lt;li&gt;Fixes binfmt_misc install on Arch&lt;/li&gt;
+  &lt;li&gt;unaligned cmpxchg now works on ARMv8.0
+    &lt;ul&gt;
+      &lt;li&gt;Thanks to CallumDev for resolving this issue!&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;usability-1&quot;&gt;Usability&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;FEXBash helper without arguments now starts a simple bash running under FEX
+    &lt;ul&gt;
+      &lt;li&gt;If any arguments are passed in then it still behaves similar to sh -c&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;FEXConfig now allows you to load an application config
+    &lt;ul&gt;
+      &lt;li&gt;Also a new advanced tab to show the raw config options&lt;/li&gt;
+      &lt;li&gt;Useful for trimming application configs&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;developer-usability-1&quot;&gt;Developer usability&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;FEXCore API visibility fixes&lt;/li&gt;
+  &lt;li&gt;FEXGetConfig application for getting some FEX information&lt;/li&gt;
+  &lt;li&gt;Option to disable static register allocation for testing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;minor-fixes-1&quot;&gt;Minor fixes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Bunch of fixes to try and resolve dangling FEXMountDaemon mounts
+    &lt;ul&gt;
+      &lt;li&gt;Significantly improved but not entirely resolved&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Fixes to POSIX signal handling&lt;/li&gt;
+  &lt;li&gt;Fixes to 32-bit ioctl emulation&lt;/li&gt;
+  &lt;li&gt;A couple new Linux syscalls implemented&lt;/li&gt;
+  &lt;li&gt;Proton fixes&lt;/li&gt;
+  &lt;li&gt;jemalloc fixes&lt;/li&gt;
+  &lt;li&gt;32-bit wine fixes&lt;/li&gt;
+  &lt;li&gt;32-bit siginfo_t fixes
+    &lt;ul&gt;
+      &lt;li&gt;Not fully resolved, needs more work&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;fex-2108&quot;&gt;FEX-2108&lt;/h1&gt;
+
+&lt;h2 id=&quot;arm64-1&quot;&gt;Arm64&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fix static-pie crashing&lt;/li&gt;
+  &lt;li&gt;Fix Spill slot calculation being offset by one slot&lt;/li&gt;
+  &lt;li&gt;Unaligned atomic fixes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;usability-2&quot;&gt;Usability&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Adds static-pie option. Necessary for chroots&lt;/li&gt;
+  &lt;li&gt;FEXMountDaemon fixes&lt;/li&gt;
+  &lt;li&gt;Named thunk configurations&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;developer-usability-2&quot;&gt;Developer usability&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Split OpcodeDispatcher in to multiple files to make navigation easier&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;minor-fixes-2&quot;&gt;Minor fixes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;CPUID TM and TM2 enable&lt;/li&gt;
+  &lt;li&gt;Update cpack package name to resolve package name conflict&lt;/li&gt;
+  &lt;li&gt;Memory leak in GdbStub&lt;/li&gt;
+  &lt;li&gt;Redundant string construction removal&lt;/li&gt;
+  &lt;li&gt;Moving some logs over to fmt format&lt;/li&gt;
+  &lt;li&gt;More Linux syscall implementations&lt;/li&gt;
+  &lt;li&gt;flag calculation fixes in IMUL and some ALU ops&lt;/li&gt;
+  &lt;li&gt;Implements support for POSIX signals 32 and 33
+    &lt;ul&gt;
+      &lt;li&gt;Fixes SOMA&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Wine fixes&lt;/li&gt;
+  &lt;li&gt;binfmt_misc supporting POCF flags
+    &lt;ul&gt;
+      &lt;li&gt;Fixes some edge case behaviour&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The detailed change log is available on &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2107...FEX-2110&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">See 2110 Release Notes, 2109 Release Notes, and 2108 Release Notes.</summary></entry><entry><title type="html">FEX 2107 &amp;amp; FEX 2106 Tagged!</title><link href="http://localhost:4001/FEX-2107/" rel="alternate" type="text/html" title="FEX 2107 &amp;amp; FEX 2106 Tagged!" /><published>2021-07-02T00:00:00+03:00</published><updated>2021-07-02T00:00:00+03:00</updated><id>http://localhost:4001/FEX-2107</id><content type="html" xml:base="http://localhost:4001/FEX-2107/">&lt;p&gt;See &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2107&quot;&gt;2107 Release Notes&lt;/a&gt;, &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2106&quot;&gt;2106 Release Notes&lt;/a&gt;.
+Both releases had a LOT of bug fixes and code cleanups, focusing on compatibility and code quality. The AOT pipeline also got multithreading support.&lt;/p&gt;
+
+&lt;h1 id=&quot;fex-2107&quot;&gt;FEX-2107&lt;/h1&gt;
+&lt;h2 id=&quot;compatibility--bug-fixes&quot;&gt;Compatibility &amp;amp; Bug Fixes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fixes bugs in unaligned atomic signal handlers&lt;/li&gt;
+  &lt;li&gt;CPUID cleanups&lt;/li&gt;
+  &lt;li&gt;Fixed a memory leak in Register Allocation&lt;/li&gt;
+  &lt;li&gt;Several syscall fixes (pidfd_send_signal, arch_prctl, fcntl, send(m)msg, shmdt, recvmsg, *chown32, edge cases around time syscalls, 32/tmpfile)&lt;/li&gt;
+  &lt;li&gt;Implement more syscalls (setfsuid32, setfsgid32, getgroups32, setgroups32, settimeofday, futimesat, utimes, 32/sigpending, 32/truncate64)&lt;/li&gt;
+  &lt;li&gt;Deferred signal handler registration, fixes bash (pts handover)&lt;/li&gt;
+  &lt;li&gt;Fixed handling of some rare elf files&lt;/li&gt;
+  &lt;li&gt;Implemented 32 bit iret&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;usability&quot;&gt;Usability&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Adds support for squashfs based rootfses&lt;/li&gt;
+  &lt;li&gt;cpack support for debian packaging&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;performance&quot;&gt;Performance&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Huge page support in our VA allocator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;misc&quot;&gt;Misc&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Reduce warnings&lt;/li&gt;
+  &lt;li&gt;Several assorted Cleanups&lt;/li&gt;
+  &lt;li&gt;Relocate ELF handling logic to the os frontend&lt;/li&gt;
+  &lt;li&gt;Improve logging SNR&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The detailed change log is available on &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2106...FEX-2107&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;fex-2106&quot;&gt;FEX-2106&lt;/h1&gt;
+&lt;h2 id=&quot;compatibility--bug-fixes-1&quot;&gt;Compatibility &amp;amp; Bug Fixes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Several syscall bug fixes (pselect, epool, semctl, msgctl, pidfd_getfd, poll, fadvise64, sigaction, mmap, epoll, uname, openat, …)&lt;/li&gt;
+  &lt;li&gt;Implemented SSE4.1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;performance-1&quot;&gt;Performance&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Multi threaded AOTGen&lt;/li&gt;
+  &lt;li&gt;Optimized ioctl/drm marshaling&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;misc-1&quot;&gt;Misc&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Several minor cleanups &amp;amp; refactors&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The detailed change log is available on &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2105...FEX-2106&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">See 2107 Release Notes, 2106 Release Notes. Both releases had a LOT of bug fixes and code cleanups, focusing on compatibility and code quality. The AOT pipeline also got multithreading support.</summary></entry><entry><title type="html">FEX 2105 Tagged!</title><link href="http://localhost:4001/FEX-2105/" rel="alternate" type="text/html" title="FEX 2105 Tagged!" /><published>2021-05-05T00:00:00+03:00</published><updated>2021-05-05T00:00:00+03:00</updated><id>http://localhost:4001/FEX-2105</id><content type="html" xml:base="http://localhost:4001/FEX-2105/">&lt;p&gt;This is our &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2105&quot;&gt;fifth tagged release&lt;/a&gt;, and it comes with loads of compatibility fixes, and performance improvements.&lt;/p&gt;
+
+&lt;p&gt;Major new features include ioctl32 marshaling, which allows FEX to run 32-bit OpenGL applications without a modified kernel, for supported drivers, as well as offline AOTIR which makes it possible to translate applications and libraries ahead of time to reduce loading times.&lt;/p&gt;
+
+&lt;h2 id=&quot;compatibility--bug-fixes&quot;&gt;Compatibility &amp;amp; Bug Fixes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;New, simpler ELF Loader&lt;/li&gt;
+  &lt;li&gt;ioctl32 marshaling for several device drivers&lt;/li&gt;
+  &lt;li&gt;Handle more cases of an application pinging self&lt;/li&gt;
+  &lt;li&gt;binfmt_misc fixes to support AppImage&lt;/li&gt;
+  &lt;li&gt;Several system call fixes (eventfd, eventfd2, openat, creat, trucnate, clock_nanosleep, pselect6, sendmsg, recvmsg)&lt;/li&gt;
+  &lt;li&gt;Signal fixes&lt;/li&gt;
+  &lt;li&gt;Better handling of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/proc/self/&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/proc/pid-self/&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Implements support for CLFLUSH&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;performance&quot;&gt;Performance&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Faster AOTIR file loading&lt;/li&gt;
+  &lt;li&gt;AOTIR offline generation&lt;/li&gt;
+  &lt;li&gt;Switch to xxhash from fasthash&lt;/li&gt;
+  &lt;li&gt;IR structure optimizations&lt;/li&gt;
+  &lt;li&gt;Adds Long Divide removal pass&lt;/li&gt;
+  &lt;li&gt;Zero-cost asserts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;misc&quot;&gt;Misc&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fixes host thread stacks ending up in lower 32-bit VA&lt;/li&gt;
+  &lt;li&gt;Remove reliance on librt and libnuma&lt;/li&gt;
+  &lt;li&gt;Default hidden visibility and strip symbols&lt;/li&gt;
+  &lt;li&gt;FEX now uses jemalloc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The detailed change log is available on &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2104...FEX-2105&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">This is our fifth tagged release, and it comes with loads of compatibility fixes, and performance improvements.</summary></entry><entry><title type="html">FEX 2104 Released!</title><link href="http://localhost:4001/FEX-2104/" rel="alternate" type="text/html" title="FEX 2104 Released!" /><published>2021-04-02T00:00:00+03:00</published><updated>2021-04-02T00:00:00+03:00</updated><id>http://localhost:4001/FEX-2104</id><content type="html" xml:base="http://localhost:4001/FEX-2104/">&lt;p&gt;This is our &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2104&quot;&gt;fourth tagged release&lt;/a&gt;, and it comes with loads of compatibility fixes, usability and documentation improvements.&lt;/p&gt;
+
+&lt;h1 id=&quot;compatibility--bug-fixes&quot;&gt;Compatibility &amp;amp; Bug Fixes&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Disables RCPC on ARM64 JIT&lt;/li&gt;
+  &lt;li&gt;Implements CPUID 0x8000’0005 for L1 cacheline information&lt;/li&gt;
+  &lt;li&gt;Implements CPUID 0x8000’0006 for cacheline information&lt;/li&gt;
+  &lt;li&gt;Implements MOVNTDQA&lt;/li&gt;
+  &lt;li&gt;Restrict imm code motion around selects to matching sizes, fixes dav1d&lt;/li&gt;
+  &lt;li&gt;Validate LOCK handling, add missing segment offsets&lt;/li&gt;
+  &lt;li&gt;Add atomic logic for SecondaryALUOp&lt;/li&gt;
+  &lt;li&gt;Adds support for locked NOT&lt;/li&gt;
+  &lt;li&gt;Adds support for locked ADC and SBB&lt;/li&gt;
+  &lt;li&gt;Adds a couple new 32bit syscalls&lt;/li&gt;
+  &lt;li&gt;Fixes an edge case of 32bit cmpxchg &amp;lt;reg&amp;gt;, &amp;lt;reg&amp;gt;&lt;/li&gt;
+  &lt;li&gt;Lock around FDToNameMap accesses (Fixes Geekbench 4 stability issues)&lt;/li&gt;
+  &lt;li&gt;Flush context around OP_SYSCALLs, Syscalls might read it&lt;/li&gt;
+  &lt;li&gt;SA_NOCLDSTOP only blocks CLD_CONTINUED/STOPPED/TRAPPED&lt;/li&gt;
+  &lt;li&gt;Add missing break for UD2 in INTOp&lt;/li&gt;
+  &lt;li&gt;Init on X87FNSAVE, fix FNINIT&lt;/li&gt;
+  &lt;li&gt;Switches FEXCore over to pthreads implementation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;usability&quot;&gt;Usability&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Support for global application profiles&lt;/li&gt;
+  &lt;li&gt;Thunks can be configured with json as an overlay&lt;/li&gt;
+  &lt;li&gt;FEXConfig improvements&lt;/li&gt;
+  &lt;li&gt;Adds support for Named RootFS folders in FEXConfig&lt;/li&gt;
+  &lt;li&gt;Cleanup threads when they exit&lt;/li&gt;
+  &lt;li&gt;Default to no logging&lt;/li&gt;
+  &lt;li&gt;Allows installing of FEXThunks in our data directory&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;documentation&quot;&gt;Documentation&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;New Readme.md &amp;amp; auto generated SourceOutline.md to help newcomers to the codebase&lt;/li&gt;
+  &lt;li&gt;Man Pages&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;internal-restructuring&quot;&gt;Internal restructuring&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Unify all four dispatchers&lt;/li&gt;
+  &lt;li&gt;Separate thread and state&lt;/li&gt;
+  &lt;li&gt;Allow both ARM64 and X86_64 jits to be compiled at the same time&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The detailed change log is available on &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2103...FEX-2104&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">This is our fourth tagged release, and it comes with loads of compatibility fixes, usability and documentation improvements.</summary></entry><entry><title type="html">FEX 2103 Released!</title><link href="http://localhost:4001/FEX-2103/" rel="alternate" type="text/html" title="FEX 2103 Released!" /><published>2021-03-03T00:00:00+02:00</published><updated>2021-03-03T00:00:00+02:00</updated><id>http://localhost:4001/FEX-2103</id><content type="html" xml:base="http://localhost:4001/FEX-2103/">&lt;p&gt;This is our &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2103&quot;&gt;third tagged release&lt;/a&gt;, and it comes with tons of fixes, and performance improvements.&lt;/p&gt;
+
+&lt;h1 id=&quot;compatibility&quot;&gt;Compatibility&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Support for unaligned atomic memory ops&lt;/li&gt;
+  &lt;li&gt;Thread local mman cache invalidation&lt;/li&gt;
+  &lt;li&gt;glib 2.32 support (cpuid fixes, faccessat2)&lt;/li&gt;
+  &lt;li&gt;cmpxchg flag fixes&lt;/li&gt;
+  &lt;li&gt;fixed cvtt* ops to actually truncate, both for x87 and sse&lt;/li&gt;
+  &lt;li&gt;Implemented BTC, BTR and BTS atomic variants&lt;/li&gt;
+  &lt;li&gt;Workaround crashes around exit_group for graceful exit&lt;/li&gt;
+  &lt;li&gt;Fixed SAR8 &amp;amp; SAR16 sign extension&lt;/li&gt;
+  &lt;li&gt;Added support for x87 rounding modes&lt;/li&gt;
+  &lt;li&gt;Added support for x87 precision modes&lt;/li&gt;
+  &lt;li&gt;Temporary fix for x87’s frem&lt;/li&gt;
+  &lt;li&gt;Fixed select system calls to update the descriptors&lt;/li&gt;
+  &lt;li&gt;Fixed handling of invalid ops when multiblock is enabled&lt;/li&gt;
+  &lt;li&gt;Fixed an edge case bug in CreateElementPair&lt;/li&gt;
+  &lt;li&gt;Fixed BRK handling&lt;/li&gt;
+  &lt;li&gt;Fixed /proc/cpuinfo topology&lt;/li&gt;
+  &lt;li&gt;Fixed compilation of superblocks with more than 256 spills&lt;/li&gt;
+  &lt;li&gt;Fixed a bug in in the MUL -&amp;gt; SHL optimization&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;performance&quot;&gt;Performance&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Added ir-cache that halves loading times when enabled (–aotir-capture &amp;amp;&amp;amp; –aotir-load)&lt;/li&gt;
+  &lt;li&gt;x87 ops no longer force interpreter for the entire superblock&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;usability&quot;&gt;Usability&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;uname now returns the host uname&lt;/li&gt;
+  &lt;li&gt;Added checks for python in the CMake files&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;misc&quot;&gt;Misc&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;ThunkLibs now generate asm wrappers, so they can be compiled with older GCCs&lt;/li&gt;
+  &lt;li&gt;Asserts on unsupported atomic ops&lt;/li&gt;
+  &lt;li&gt;Removed erratic asserts in RA&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The detailed change log is available on &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2102...FEX-2103&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">This is our third tagged release, and it comes with tons of fixes, and performance improvements.</summary></entry><entry><title type="html">FEX 2102 Released!</title><link href="http://localhost:4001/FEX-2102/" rel="alternate" type="text/html" title="FEX 2102 Released!" /><published>2021-02-08T00:00:00+02:00</published><updated>2021-02-08T00:00:00+02:00</updated><id>http://localhost:4001/FEX-2102</id><content type="html" xml:base="http://localhost:4001/FEX-2102/">&lt;p&gt;This is our &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2102&quot;&gt;second tagged release&lt;/a&gt;, and it comes with several improvements and fixes.&lt;/p&gt;
+
+&lt;h2 id=&quot;compatibility&quot;&gt;Compatibility&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Unaligned cmpxchg &amp;amp; cmpxchg8b on ARMv8.1+&lt;/li&gt;
+  &lt;li&gt;Mutliblock now gracefully handles unsupported / invalid instructions. This makes it safe to always enable multi block&lt;/li&gt;
+  &lt;li&gt;Several fixes for 32-bit binaries: branch handling, signal return, memory allocation, ioctl32 for x86-64 host&lt;/li&gt;
+  &lt;li&gt;Improved BRK handling&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;perfomance&quot;&gt;Perfomance&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Much reduced stuttering during JIT compilation. The JIT optimizer is now over 3x as fast.&lt;/li&gt;
+  &lt;li&gt;Per-thread IR Caching with cached RA, for faster recovery from code cache resets&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;usability&quot;&gt;Usability&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Defaults now to jit, multiblock, 5000 instructions.&lt;/li&gt;
+  &lt;li&gt;CPUID returns fex version&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;misc&quot;&gt;Misc&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Cleaned up IR printing, extended asm tests to test IR dumping &amp;amp; IR printing&lt;/li&gt;
+  &lt;li&gt;Integrated gcc target tests to our CI&lt;/li&gt;
+  &lt;li&gt;Removed many warnings&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The detailed change log is available on &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2101...FEX-2102&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">This is our second tagged release, and it comes with several improvements and fixes.</summary></entry><entry><title type="html">Hello world</title><link href="http://localhost:4001/Hello-World/" rel="alternate" type="text/html" title="Hello world" /><published>2021-01-26T00:00:00+02:00</published><updated>2021-01-26T00:00:00+02:00</updated><id>http://localhost:4001/Hello-World</id><content type="html" xml:base="http://localhost:4001/Hello-World/">&lt;p&gt;FEX-Emu is a linux usermode x86 and x86-64 emulator for arm64. It aims to bring x86 and x86-64 games to arm64 devices.&lt;/p&gt;
 
 &lt;p&gt;It can already run full fledged applications like GIMP or clang and games such as FTL and UT2004.&lt;/p&gt;
 
-&lt;p&gt;For more information, please visit our &lt;a href=&quot;https://github.com/FEX-Emu/FEX&quot;&gt;project page on github&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">FEX-Emu is a linux usermode x86 and x86-64 emulator for arm64. It aims to bring x86 and x86-64 games to arm64 laptops.</summary></entry></feed>
+&lt;p&gt;For more information, please visit our &lt;a href=&quot;https://github.com/FEX-Emu/FEX&quot;&gt;project page on github&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">FEX-Emu is a linux usermode x86 and x86-64 emulator for arm64. It aims to bring x86 and x86-64 games to arm64 devices.</summary></entry></feed>
