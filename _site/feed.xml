@@ -1,21 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4001/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4001/" rel="alternate" type="text/html" /><updated>2022-01-07T12:00:48+02:00</updated><id>http://localhost:4001/feed.xml</id><title type="html">FEX-Emu</title><subtitle>A fast linux usermode x86 and x86-64 emulator</subtitle><entry><title type="html">FEX 2201 Tagged!</title><link href="http://localhost:4001/FEX-2201/" rel="alternate" type="text/html" title="FEX 2201 Tagged!" /><published>2022-01-03T00:00:00+02:00</published><updated>2022-01-03T00:00:00+02:00</updated><id>http://localhost:4001/FEX-2201</id><content type="html" xml:base="http://localhost:4001/FEX-2201/">&lt;p&gt;See &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2201&quot;&gt;2201 Release Notes&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h1 id=&quot;fex-2201&quot;&gt;FEX-2201&lt;/h1&gt;
-&lt;h1 id=&quot;changes&quot;&gt;Changes&lt;/h1&gt;
-&lt;p&gt;A large amount of changes this month.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4001/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4001/" rel="alternate" type="text/html" /><updated>2022-01-10T23:31:38+02:00</updated><id>http://localhost:4001/feed.xml</id><title type="html">FEX-Emu</title><subtitle>A fast linux usermode x86 and x86-64 emulator</subtitle><entry><title type="html">FEX 2201 Tagged!</title><link href="http://localhost:4001/FEX-2201/" rel="alternate" type="text/html" title="FEX 2201 Tagged!" /><published>2022-01-03T00:00:00+02:00</published><updated>2022-01-03T00:00:00+02:00</updated><id>http://localhost:4001/FEX-2201</id><content type="html" xml:base="http://localhost:4001/FEX-2201/">&lt;p&gt;Another release with a lot changes this month!&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;We now support BMI2, RDTSCP, CLZero.&lt;/li&gt;
   &lt;li&gt;We tell the guest what ARM CPU name we are running on.&lt;/li&gt;
   &lt;li&gt;We expose the hybrid CPU flag flag on big.LITTLE ARM SoCs.&lt;/li&gt;
   &lt;li&gt;Bunches of syscall fixes, JIT compile time speed increases, usability improvements.&lt;/li&gt;
   &lt;li&gt;Tons more.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A new FEXRootFSFetcher tool for downloading prebuilt RootFS images.
-A Python script for automatically setting up an Ubuntu PPA and RootFS.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;See our quick start guide to see how &lt;a href=&quot;https://github.com/FEX-Emu/FEX#quick-start-guide&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Or see the Ubuntu PPA &lt;a href=&quot;https://launchpad.net/~fex-emu/+archive/ubuntu/fex&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;A new FEXRootFSFetcher tool for downloading prebuilt RootFS images.&lt;/li&gt;
+  &lt;li&gt;A Python script for automatically setting up an Ubuntu PPA and RootFS.
+    &lt;ul&gt;
+      &lt;li&gt;See our quick start guide to see how &lt;a href=&quot;https://github.com/FEX-Emu/FEX#quick-start-guide&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;Or see the Ubuntu PPA &lt;a href=&quot;https://launchpad.net/~fex-emu/+archive/ubuntu/fex&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;fexcore&quot;&gt;FEXCore&lt;/h2&gt;
@@ -168,9 +164,14 @@ A Python script for automatically setting up an Ubuntu PPA and RootFS.&lt;/p&gt;
   &lt;li&gt;Adds a python script that can hand hold a user through FEX install (b276750c)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;The detailed change log is available on &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2112...FEX-2201&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">See 2201 Release Notes.</summary></entry><entry><title type="html">FEX 2112 Tagged!</title><link href="http://localhost:4001/FEX-2112/" rel="alternate" type="text/html" title="FEX 2112 Tagged!" /><published>2021-12-05T00:00:00+02:00</published><updated>2021-12-05T00:00:00+02:00</updated><id>http://localhost:4001/FEX-2112</id><content type="html" xml:base="http://localhost:4001/FEX-2112/">&lt;p&gt;See &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2112&quot;&gt;2112 Release Notes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;See the &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2112&quot;&gt;2112 Release Notes&lt;/a&gt; or the &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2112...FEX-2201&quot;&gt;detailed change log&lt;/a&gt; in Github.&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">Another release with a lot changes this month! We now support BMI2, RDTSCP, CLZero. We tell the guest what ARM CPU name we are running on. We expose the hybrid CPU flag flag on big.LITTLE ARM SoCs. Bunches of syscall fixes, JIT compile time speed increases, usability improvements. Tons more. A new FEXRootFSFetcher tool for downloading prebuilt RootFS images. A Python script for automatically setting up an Ubuntu PPA and RootFS. See our quick start guide to see how here Or see the Ubuntu PPA here</summary></entry><entry><title type="html">FEX 2112 Tagged!</title><link href="http://localhost:4001/FEX-2112/" rel="alternate" type="text/html" title="FEX 2112 Tagged!" /><published>2021-12-05T00:00:00+02:00</published><updated>2021-12-05T00:00:00+02:00</updated><id>http://localhost:4001/FEX-2112</id><content type="html" xml:base="http://localhost:4001/FEX-2112/">&lt;p&gt;A lot of changed things this month.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;New instructions &amp;amp; fixes (BZHI, MULX, RORX, SARX/SHLX/SHRX)&lt;/li&gt;
+  &lt;li&gt;steamwebhelper now works&lt;/li&gt;
+  &lt;li&gt;Linux emulation updated to 5.16, sched_getaffinity, MAP_32BIT, 32-bit DRM emulation improvements&lt;/li&gt;
+  &lt;li&gt;Several other bug fixes and optimizations&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h1 id=&quot;fex-2112&quot;&gt;FEX-2112&lt;/h1&gt;
 &lt;h2 id=&quot;arm64&quot;&gt;Arm64&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Reduce the chance of hanging on reentrant allocations (8ab6830f)&lt;/li&gt;
@@ -342,9 +343,8 @@ A Python script for automatically setting up an Ubuntu PPA and RootFS.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;The detailed change log is available on &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2111...FEX-2112&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">See 2112 Release Notes.</summary></entry><entry><title type="html">FEX 2111 Tagged!</title><link href="http://localhost:4001/FEX-2111/" rel="alternate" type="text/html" title="FEX 2111 Tagged!" /><published>2021-11-06T00:00:00+02:00</published><updated>2021-11-06T00:00:00+02:00</updated><id>http://localhost:4001/FEX-2111</id><content type="html" xml:base="http://localhost:4001/FEX-2111/">&lt;p&gt;See &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2111&quot;&gt;2111 Release Notes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;See the &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2112&quot;&gt;2112 Release Notes&lt;/a&gt; or the &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2111...FEX-2112&quot;&gt;detailed change log&lt;/a&gt; in Github.&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">A lot of changed things this month. New instructions &amp;amp; fixes (BZHI, MULX, RORX, SARX/SHLX/SHRX) steamwebhelper now works Linux emulation updated to 5.16, sched_getaffinity, MAP_32BIT, 32-bit DRM emulation improvements Several other bug fixes and optimizations</summary></entry><entry><title type="html">FEX 2111 Tagged!</title><link href="http://localhost:4001/FEX-2111/" rel="alternate" type="text/html" title="FEX 2111 Tagged!" /><published>2021-11-06T00:00:00+02:00</published><updated>2021-11-06T00:00:00+02:00</updated><id>http://localhost:4001/FEX-2111</id><content type="html" xml:base="http://localhost:4001/FEX-2111/">&lt;p&gt;BMI1 is now fully supported, several linux emulation fixes, thunk cleanups, initialization optimizations and several other assorted improvements.&lt;/p&gt;
 
-&lt;h1 id=&quot;fex-2111&quot;&gt;FEX-2111&lt;/h1&gt;
 &lt;h1 id=&quot;core&quot;&gt;Core&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;BMI1 extension is now supported!
@@ -423,7 +423,7 @@ A Python script for automatically setting up an Ubuntu PPA and RootFS.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;The detailed change log is available on &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2110...FEX-2111&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">See 2111 Release Notes.</summary></entry><entry><title type="html">FEX 2110, 2109, &amp;amp; 2108 Tagged!</title><link href="http://localhost:4001/FEX-2110/" rel="alternate" type="text/html" title="FEX 2110, 2109, &amp;amp; 2108 Tagged!" /><published>2021-10-08T00:00:00+03:00</published><updated>2021-10-08T00:00:00+03:00</updated><id>http://localhost:4001/FEX-2110</id><content type="html" xml:base="http://localhost:4001/FEX-2110/">&lt;p&gt;See &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2110&quot;&gt;2110 Release Notes&lt;/a&gt;, &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2109&quot;&gt;2109 Release Notes&lt;/a&gt;, and &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2108&quot;&gt;2108 Release Notes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;See the &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2111&quot;&gt;2111 Release Notes&lt;/a&gt; or the &lt;a href=&quot;https://github.com/FEX-Emu/FEX/compare/FEX-2110...FEX-2111&quot;&gt;detailed change log&lt;/a&gt; in Github.&lt;/p&gt;</content><author><name>FEX-Emu Maintainers</name></author><summary type="html">BMI1 is now fully supported, several linux emulation fixes, thunk cleanups, initialization optimizations and several other assorted improvements.</summary></entry><entry><title type="html">FEX 2110, 2109, &amp;amp; 2108 Tagged!</title><link href="http://localhost:4001/FEX-2110/" rel="alternate" type="text/html" title="FEX 2110, 2109, &amp;amp; 2108 Tagged!" /><published>2021-10-08T00:00:00+03:00</published><updated>2021-10-08T00:00:00+03:00</updated><id>http://localhost:4001/FEX-2110</id><content type="html" xml:base="http://localhost:4001/FEX-2110/">&lt;p&gt;See &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2110&quot;&gt;2110 Release Notes&lt;/a&gt;, &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2109&quot;&gt;2109 Release Notes&lt;/a&gt;, and &lt;a href=&quot;https://github.com/FEX-Emu/FEX/releases/tag/FEX-2108&quot;&gt;2108 Release Notes&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h1 id=&quot;fex-2110&quot;&gt;FEX-2110&lt;/h1&gt;
 &lt;h2 id=&quot;usability&quot;&gt;Usability&lt;/h2&gt;

@@ -2,11 +2,27 @@
 layout: default
 ---
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+<p>
+  FEX-Emu allows you to run x86 and x86-64 binaries on an AArch64 host, similar to <a href="https://www.qemu.org/docs/master/user/main.html">qemu-user</a> and <a href="https://box86.org/">box86/box64</a>.
+</p>
+<p>
+  It has native support for a rootfs overlay, so you don't need to chroot, as well as some thunklibs so it can forward things like GL to the host.
+</p>
+<p>
+  It presents a Linux 5.0 interface to the guest, and supports both AArch64 and x86-64 as hosts.
+</p>
+<p>
+  This project is very much work in progress, so expect things to change.</p>
+</p>
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+<a href="https://github.com/FEX-Emu/FEX#quick-start-guide">Try it out</a>
+
+<h2>News</h2>
+<div class="news">
+  {% for post in site.posts limit:3 %}
+    <article class="news-item">
+
+      <a href="{{ site.baseurl }}{{ post.url }}"><h3>{{ post.title }}</h3></a>
 
       <div class="entry">
         {{ post.excerpt }}
@@ -15,4 +31,5 @@ layout: default
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
     </article>
   {% endfor %}
+  <a href="{{ site.blog }}">Older Posts</a>
 </div>
