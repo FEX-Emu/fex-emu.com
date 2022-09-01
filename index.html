@@ -19,7 +19,17 @@ layout: default
 
 <h2>News</h2>
 <div class="news">
-  {% for post in site.posts limit:3 %}
+  {% assign count = 0 %}
+  {% for post in site.posts %}
+  {% comment %}
+	  Don't show any hidden posts on the news page
+  {% endcomment %}
+  {% unless post.hidden == null %}{% continue %}{% endunless %}
+  {% comment %}
+	  Only show three posts
+  {% endcomment %}
+  {% unless count < 3 %}{% break %}{% endunless %}
+  {% assign count = count | plus: 1 %}
     <article class="news-item">
 
       <a href="{{ site.baseurl }}{{ post.url }}"><h3>{{ post.title }}</h3></a>

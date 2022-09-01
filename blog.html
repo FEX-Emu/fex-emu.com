@@ -4,6 +4,7 @@ layout: default
 
 <div class="news">
   {% for post in site.posts %}
+  {% unless post.hidden == null %}{% continue %}{% endunless %}
     <article class="news-item">
 
       <a href="{{ site.baseurl }}{{ post.url }}"><h3>{{ post.title }}</h3></a>
