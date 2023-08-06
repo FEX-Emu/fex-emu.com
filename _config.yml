@@ -9,7 +9,7 @@ name: FEX-Emu
 description: A fast linux usermode x86 and x86-64 emulator
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://github.com/FEX-Emu/fex-emu.org/raw/main/images/fex-textlogo-140h.png
+avatar: https://github.com/FEX-Emu/fex-emu.com/raw/main/images/fex-textlogo-140h.png
 
 #
 # Flags below are optional
@@ -42,7 +42,7 @@ google_analytics:
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url: https://fex-emu.org
+url: https://fex-emu.com
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
