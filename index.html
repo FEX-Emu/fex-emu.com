@@ -9,7 +9,7 @@ layout: default
   It supports forwarding API calls to host system libraries like OpenGL or Vulkan to reduce emulation overhead. An experimental code cache helps minimize in-game stuttering as much as possible. Furthermore, a per-app configuration system allows tweaking performance per game, e.g. by skipping costly memory model emulation. We also provide a user-friendly FEXConfig GUI to explore and change these settings.
 </p>
 <p>
-  On the technical side, FEX features an advanced binary recompiler that supports all modern extensions of the x86(-64) instruction set, including AVX/AVX2. The heart of this recompiler is a custom IR that allows us to generate more optimized code than other emulators. A comprehensive system call translation layer takes care of differences between the emulated and host operating systems and implements even niche features like seccomp. A modular core enables FEX to be used as a WoW64/ARM64EC backend in Wine.
+  On the technical side, FEX features an advanced binary recompiler that supports all modern extensions of the x86(-64) instruction set, including AVX/AVX2. The heart of this recompiler is a custom IR that allows us to generate more optimized code than a traditional splatter JIT. A comprehensive system call translation layer takes care of differences between the emulated and host operating systems and implements even niche features like seccomp. A modular core enables FEX to be used as a WoW64/ARM64EC backend in Wine.
 </p>
 
 <a href="https://github.com/FEX-Emu/FEX#quick-start-guide">Try it out</a>
