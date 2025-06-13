@@ -3,16 +3,13 @@ layout: default
 ---
 
 <p>
-  FEX-Emu allows you to run x86 and x86-64 binaries on an AArch64 Linux host, similar to <a href="https://www.qemu.org/docs/master/user/main.html">qemu-user</a> and <a href="https://box86.org/">box86/box64</a>.
+  FEX allows you to run x86 applications on ARM64 Linux devices, similar to <a href="https://www.qemu.org/docs/master/user/main.html">qemu-user</a> and <a href="https://box86.org/">box64</a>. It offers broad compatibility with both 32-bit and 64-bit binaries, and it can be used alongside Wine/Proton to play Windows games.
 </p>
 <p>
-  It has native support for a rootfs overlay, so you don't need to chroot, as well as some thunklibs so it can forward things like GL to the host.
+  It supports forwarding API calls to host system libraries like OpenGL or Vulkan to reduce emulation overhead. An experimental code cache helps minimize in-game stuttering as much as possible. Furthermore, a per-app configuration system allows tweaking performance per game, e.g. by skipping costly memory model emulation. We also provide a user-friendly FEXConfig GUI to explore and change these settings.
 </p>
 <p>
-  It presents a Linux 5.0 or newer interface to the guest, and supports only AArch64 as a host.
-</p>
-<p>
-  This project is very much work in progress, so expect things to change.</p>
+  On the technical side, FEX features an advanced binary recompiler that supports all modern extensions of the x86(-64) instruction set, including AVX/AVX2. The heart of this recompiler is a custom IR that allows us to generate more optimized code than other emulators. A comprehensive system call translation layer takes care of differences between the emulated and host operating systems and implements even niche features like seccomp. A modular core enables FEX to be used as a WoW64/ARM64EC backend in Wine.
 </p>
 
 <a href="https://github.com/FEX-Emu/FEX#quick-start-guide">Try it out</a>
