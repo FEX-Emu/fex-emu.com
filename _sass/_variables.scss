@@ -1,9 +1,8 @@
-
 //
 // VARIABLES
 //
 
-// Colors
+// Colors (Sass variables, still usable in SCSS)
 $blue: #4183C4;
 
 // Grays
@@ -25,3 +24,30 @@ $georgia: Georgia, serif;
     @content;
   }
 }
+
+// ------------------------------
+// CSS Custom Properties (Light)
+// ------------------------------
+:root {
+  --blue: #{$blue};
+  --black: #{$black};
+  --darkerGray: #{$darkerGray};
+  --darkGray: #{$darkGray};
+  --gray: #{$gray};
+  --lightGray: #{$lightGray};
+  --white: #{$white};
+}
+
+// ------------------------------
+// CSS Custom Properties (Dark)
+// ------------------------------
+[data-theme="dark"] {
+  --blue: #58a6ff;
+  --black: #ffffff;
+  --darkerGray: #f0f0f0;
+  --darkGray: #e0e0e0;
+  --gray: #bbbbbb;
+  --lightGray: #333333;
+  --white: #111111;
+}
+

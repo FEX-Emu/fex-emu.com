@@ -21,16 +21,20 @@
         <header class="masthead clearfix">
           <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
 
-          <nav>
-            <a href="{{ site.baseurl }}/{{ site.blog }}">Blog</a>
-            <a href="https://github.com/FEX-Emu/FEX">Github</a>
-            {% if site.footer-links.twitter %}
-              <a href="https://www.twitter.com/{{ site.footer-links.twitter }}">Twitter</a>
-            {% endif %}
-            {% if site.footer-links.discord %}
-              <a href="https://discord.gg/{{ site.footer-links.discord }}">Discord</a>
-            {% endif %}
-          </nav>
+        <nav>
+          <a href="{{ site.baseurl }}/{{ site.blog }}">Blog</a>
+          <a href="https://github.com/FEX-Emu/FEX">Github</a>
+          {% if site.footer-links.twitter %}
+            <a href="https://www.twitter.com/{{ site.footer-links.twitter }}">Twitter</a>
+          {% endif %}
+          {% if site.footer-links.discord %}
+            <a href="https://discord.gg/{{ site.footer-links.discord }}">Discord</a>
+          {% endif %}
+
+          <!-- Dark mode toggle -->
+          <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle dark mode">🌙 / ☀️</button>
+        </nav>
+
         </header>
       </div>
     </div>
@@ -48,5 +52,25 @@
     </div>
 
     {% include analytics.html %}
+    <script>
+    // Apply stored theme or system preference
+    (function() {
+      const stored = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (stored === "dark" || (!stored && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+
+    // Toggle function
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
+    </script>  
   </body>
 </html>
