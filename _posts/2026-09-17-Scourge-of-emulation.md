@@ -59,7 +59,7 @@ as x86, although we are actually being *more* strict than what is necessary. Thi
 As one might think, it is *exceedingly* costly to emulate TSO wth this instructions and we have microbenchmarks that can show this.
 As ARM CPUs weren't designed to have these relatively rare acquire/release instructions suddenly become the vast majority of instructions executed.
 
-First let's start with something easy and use a microbenchmark that is fairly nice to the hardware. No tricky edge-cases, just accessing memory in in
+First let's start with something easy and use a microbenchmark that is fairly nice to the hardware. No tricky edge-cases, just accessing memory in
 the common case. This gives us some baseline numbers for what the best-case situation should be.
 
 <div id="memory_access_times" style="min-width: 250px; height: 400px; margin: 0 auto"></div>
