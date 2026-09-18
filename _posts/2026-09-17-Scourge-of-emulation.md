@@ -220,7 +220,7 @@ effectively nothing. This primarily comes down to unaligned accesses no longer r
 hardware just handles it directly.
 
 For us, this is what it means to take x86 emulation seriously on ARM and it really shows that Apple cared that their customers would have a good
-experience running software both natively and emulated. They saw the problem and just solved it, making it go away.
+experience running software both natively and emulated. They saw the problem and just <span data-toggle="tooltip" title="Not entirely. More on that later"><span class="tooltip_text">"solved"</span></span> it, making it go away.
 That said, when the TSO mode _is_ enabled, you do get a performance hit. Comparing to the previous graph it's only getting 76% of the regular
 store performance, and the load performance basically matches; that's much more tolerable to bear when everything is so much faster.
 
@@ -276,11 +276,12 @@ JIT.
 | LOCK BTC | ldclralb |
 | LOCK BTR | ldeoralb |
 | LOCK BTS | ldsetalb |
+| XCHG | swpal |
 | LOCK CMPXCHG | casal |
 | CMPXCHG8B | caspal |
 | CMPXCHG16B | caspal |
 
-Well would you look at that, we have a full list of the 18 atomic RMW operations and they basically map directly to some ARM instructions. Ignore the questionable
+Well would you look at that, we have a full list of the 19 atomic RMW operations and they basically map directly to some ARM instructions. Ignore the questionable
 one as it's not used in real workloads and we would get far too in to the weeds talking about it. We have a pretty clear 1:1 mapping between the
 architectures, job's done right? That's the funny thing about x86 emulation, just because we have these instructions doesn't mean we get to wire them
 up without problems. We spent all this time talking about how unaligned accesses can really hurt performance of regular loads and stores, this same
@@ -289,7 +290,7 @@ problem also applies to RMW atomics!
 <div id="unaligned_lock_add_latency" style="min-width: 250px; height: 400px; margin: 0 auto"></div>
 
 With this graph, we are looking at a single atomic instruction with its memory address landing somewhere within a cacheline. If we included all of the
-data for all 18 atomic operations then this data would be even more overwhelming than it already is. All these atomic operations behave _roughly_
+data for all 19 atomic operations then this data would be even more overwhelming than it already is. All these atomic operations behave _roughly_
 equivalent so it would be redundant and wouldn't matter for what we're discussing here anyway. This is also the first graph in this post that is
 actually using logarithmic scaling, so when reading it make sure to understand that the performance difference from the fastest to slowest result is
 on the scale of around 1000x.
